@@ -29,54 +29,26 @@ This repository provides a professional, production-ready toolkit for advanced t
 - Jupyter Notebook (experimentation)
 - Linux (development and execution environment)
 
+## How to Run
+The main scripts can be executed as follows:
+```bash
+python3 forecast.py -d <dataset path> -n <number of time series selected> -t <offline_all|online_all|online_self>
+python3 detect.py -d <dataset path> -n <number of time series selected> -t <offline_all|online_all> -mae <error value as double>
+python3 reduce.py -d <dataset> -q <queryset> -od <output_dataset_file> -oq <output_query_file> -t <offline_all|online_all>
+```
+- `-t offline_all`: Use a pre-trained model for all time series
+- `-t online_all`: Train on all time series during execution
+- `-t online_self`: Train per time series during execution
+
+The directory structure must remain unchanged for successful execution. Some TensorFlow warnings may appear but do not affect results.
+
 ## File Structure
-- `project-algorithms.ipynb`: Main Jupyter notebook with all experiments and analysis
-- `forecast.py`: LSTM-based forecasting tool
-- `detect.py`: LSTM autoencoder-based anomaly detection tool
-- `reduce.py`: Convolutional autoencoder for dimensionality reduction
-- `split_dataset.py`: Utility to split datasets into train/test/query sets
-- `common_utils.py`: Shared utility functions
-- `doc/`: Documentation and assignment description
-
-## Usage
-### Input Format
-Input files are tab-separated, with each row representing a time series:
-```
-item_id1 X11 X12 ... X1d
-item_idN XN1 XN2 ... XNd
-```
-
-### Forecasting
-Train and evaluate an LSTM model for stock price prediction:
-```
-python3 forecast.py -d <dataset path> -n <number of time series selected> -t <"offline_all" or "online_all" or "online_self">
-```
-- `-t offline_all`: Load pre-trained model for all series
-- `-t online_all`: Train on all series during execution
-- `-t online_self`: Train per series during execution
-
-### Anomaly Detection
-Detect anomalies in stock time series using LSTM autoencoders:
-```
-python3 detect.py -d <dataset path> -n <number of time series selected> -t <"offline_all" or "online_all"> -mae <error value as double>
-```
-- `-t offline_all`: Load pre-trained model for all series
-- `-t online_all`: Train on all series during execution
-- `-mae`: Mean Absolute Error threshold for anomaly detection
-
-### Dimensionality Reduction & Representation Learning
-Learn compact representations with convolutional autoencoders:
-```
-python3 reduce.py -d <dataset> -q <queryset> -od <output_dataset_file> -oq <output_query_file> -t <"offline_all" or "online_all">
-```
-- Outputs reduced representations in tab-separated files
-- Enables clustering and similarity search
-
-### Dataset Splitting
-Split a dataset into train/test/query sets:
-```
-python3 split_dataset.py <dataset_path>
-```
+- `split_dataset.py`: Splits the dataset into `dataset.csv` and `queryset.csv`
+- `common_utils.py`: Common utility functions
+- `forecast.py`: LSTM-based time series forecasting
+- `detect.py`: LSTM autoencoder-based anomaly detection
+- `reduce.py`: Convolutional autoencoder for dimensionality reduction and representation
+- `project-algorithms.ipynb`: Main notebook with all experiments and analysis
 
 ## Experimental Results
 - Extensive experiments were conducted for all models, with hyperparameter tuning (batch size, layers, units, time steps, latent dimension, etc.)
