@@ -1,23 +1,27 @@
 # Project Overview
 This project implements a modular deep learning framework for time series forecasting, anomaly detection, and representation learning. The primary focus is on stock time series, utilizing LSTM and convolutional autoencoder architectures for robust, scalable analysis. All code is provided as Python scripts and Jupyter notebooks for reproducibility and extensibility.
 
+# Table of Contents
+- [Project Overview](#project-overview)
+- [Development Environment](#development-environment)
+- [Collaboration](#collaboration)
+- [Theoretical Background](#theoretical-background)
+- [Experimental Methodology](#experimental-methodology)
+- [Results & Discussion](#results--discussion)
+- [Conclusion & Future Work](#conclusion--future-work)
+
 # Development Environment
 Development was performed in Google Collaboratory using Python notebooks. The source code is also provided as .py files for command-line execution.
 
+# Collaboration
 This repository was developed in cooperation with the kondim/repository project, which was used to verify and validate some of the results produced here, particularly for high-dimensional search and clustering tasks using the compressed time series representations.
 
-# How to Run
-The main scripts can be executed as follows:
-```bash
-python3 forecast.py -d <dataset path> -n <number of time series selected> -t <offline_all|online_all|online_self>
-python3 detect.py -d <dataset path> -n <number of time series selected> -t <offline_all|online_all> -mae <error value as double>
-python3 reduce.py -d <dataset> -q <queryset> -od <output_dataset_file> -oq <output_query_file> -t <offline_all|online_all>
-```
-- `-t offline_all`: Use a pre-trained model for all time series
-- `-t online_all`: Train on all time series during execution
-- `-t online_self`: Train per time series during execution
+# Theoretical Background
+## LSTM Networks
+Long Short-Term Memory (LSTM) networks are a type of recurrent neural network (RNN) designed to capture long-term dependencies in sequential data. They are effective for time series forecasting due to their ability to model temporal patterns and mitigate vanishing gradient issues.
 
-The directory structure must remain unchanged for successful execution. Some TensorFlow warnings may appear but do not affect results.
+## Autoencoders
+Autoencoders are neural networks trained to reconstruct their input. LSTM autoencoders are used for sequence reconstruction and anomaly detection, while convolutional autoencoders learn compressed representations for clustering and retrieval.
 
 # Experimental Methodology
 ## Time Series Forecasting
@@ -114,11 +118,15 @@ The following images show examples where the model achieved high-quality compres
 
 The compressed time series produced were injected into the search and clustering suite for high-dimensional vectors and curves in the `kondim/repository` project. This allowed for effective nearest neighbor search and clustering, with similar centroids and neighbors being found, demonstrating the quality and utility of the learned representations for downstream tasks.
 
-# Key Observations
-- LSTM models are effective for both forecasting and anomaly detection in time series.
-- Convolutional autoencoders enable dimensionality reduction and facilitate downstream tasks.
-- Hyperparameter tuning and regularization are critical for robust performance.
-- Limitations include sensitivity to data quality and the need for careful threshold selection in anomaly detection.
+# Results & Discussion
+The experiments demonstrate that:
+- LSTM models provide accurate forecasting and robust anomaly detection for time series data.
+- Convolutional autoencoders enable effective dimensionality reduction, supporting downstream tasks such as clustering and nearest neighbor search.
+- Hyperparameter tuning and regularization (dropout) are critical for optimal performance.
+- The compressed representations were validated externally, confirming their utility for high-dimensional search and clustering.
 
-# Conclusion
-This project demonstrates the effectiveness of deep learning for time series analysis. The provided framework is extensible and can be adapted to other domains or enhanced with advanced architectures such as attention mechanisms or transformers. Future work may include automated hyperparameter optimization and model explainability.
+# Conclusion & Future Work
+This project demonstrates the effectiveness of deep learning for time series analysis. The framework is extensible and can be adapted to other domains or enhanced with advanced architectures such as attention mechanisms or transformers. Future work may include:
+- Automated hyperparameter optimization
+- Model explainability and interpretability
+- Application to other types of sequential data
