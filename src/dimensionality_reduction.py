@@ -7,7 +7,7 @@ from keras.layers import *
 from sklearn.preprocessing import MinMaxScaler
 import sys
 import os
-from common_utils import *
+from utils import *
 
 
 #current file path + /models/

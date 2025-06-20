@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from common_utils import *
+from utils import *
 import matplotlib.pyplot as plt
 import keras
 import pandas as pd

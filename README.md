@@ -1,6 +1,6 @@
 # Deep Learning for Time Series: Forecasting, Anomaly Detection, and Representation Learning
 
-This repository contains the project as originally developed in [kondim/repository](https://github.com/kondim/repository), now extended and refactored for clarity, reproducibility, and extensibility.
+This repository contains the project as originally developed in [time-series-dl.ipynb](https://gist.github.com/kondim23/3a000579d870bd0ca7edc314db58f2fa), now extended and refactored for clarity, reproducibility, and extensibility.
 
 ## Problem Statement
 Time series analysis is essential in fields like finance, engineering, and science for forecasting, anomaly detection, and pattern discovery. In stock markets, accurate forecasting and anomaly detection drive better investment decisions, risk management, and fraud detection. However, stock time series are high-dimensional, noisy, and non-stationary, making traditional methods insufficient for robust analysis.
@@ -9,13 +9,16 @@ Time series analysis is essential in fields like finance, engineering, and scien
 This project addresses the challenges of time series analysis by leveraging deep learning techniques and providing:
 - **LSTM Networks** for forecasting and anomaly detection, capturing long-term dependencies and complex temporal patterns.
 - **Convolutional Autoencoders** for dimensionality reduction and representation learning, enabling efficient clustering and similarity search in high-dimensional spaces.
-- **External Validation:** Compressed time series representations are validated through high-dimensional search and clustering in the [kondim/repository](https://github.com/kondim/repository) project, confirming their practical utility.
+
+## Collaboration
+This repository was developed in cooperation with the [kondim/highdim-curve-search-clustering](https://github.com/kondim23/highdim-curve-search-clustering), which was used to verify and validate some of the results produced here, particularly for high-dimensional search and clustering tasks using the compressed time series representations.
 
 ## Project Recap
 See [doc/report.md](doc/report.md) for detailed methodology, experiments, and results. Highlights include:
 - Extensive hyperparameter tuning and validation for all models.
 - Visual and quantitative evaluation of forecasting, anomaly detection, and compression.
 - External validation of compressed representations for clustering and search.
+
 
 ## Project Structure
 ```
@@ -26,29 +29,17 @@ project-algorithms-ml/
 ├── src/                         # Source code for models and utilities
 │   ├── forecasting.py
 │   ├── anomaly_detection.py
-│   ├── compression.py
-│   ├── common_utils.py
-│   └── split_dataset.py
-├── results/                     # Output results, figures, and tables
-│   ├── figures/
-│   ├── tables/
-│   └── logs/
+│   ├── dimensionality_reduction.py
+│   ├── utils.py
+│   └── dataset_splitter.py
 ├── doc/                         # Documentation and reports
 │   ├── report.md
-│   └── README.md
-├── requirements.txt             # Python dependencies
-├── LICENSE
-└── .gitignore
+├── README.md
 ```
 
 ## Installation
 - Python 3.7+
-- TensorFlow, Keras, NumPy, pandas, matplotlib (see `requirements.txt`)
-
-Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+- TensorFlow, Keras, NumPy, pandas, matplotlib
 
 ## Usage
 ### Input Format
@@ -61,7 +52,7 @@ item_idN XN1 XN2 ... XNd
 ### Forecasting
 Train and evaluate an LSTM model for time series prediction:
 ```bash
-python3 forecast.py -d <dataset path> -n <number of time series selected> -t <offline_all|online_all|online_self>
+python3 forecasting.py -d <dataset path> -n <number of time series selected> -t <offline_all|online_all|online_self>
 ```
 - `-t offline_all`: Use a pre-trained model for all time series
 - `-t online_all`: Train on all time series during execution
@@ -70,25 +61,22 @@ python3 forecast.py -d <dataset path> -n <number of time series selected> -t <of
 ### Anomaly Detection
 Detect anomalies in time series using LSTM autoencoders:
 ```bash
-python3 detect.py -d <dataset path> -n <number of time series selected> -t <offline_all|online_all> -mae <error value as double>
+python3 anomaly_detection.py -d <dataset path> -n <number of time series selected> -t <offline_all|online_all> -mae <error value as double>
 ```
 - `-mae`: Mean Absolute Error threshold for anomaly detection
 
 ### Dimensionality Reduction & Representation Learning
 Learn compact representations with convolutional autoencoders:
 ```bash
-python3 reduce.py -d <dataset> -q <queryset> -od <output_dataset_file> -oq <output_query_file> -t <offline_all|online_all>
+python3 dimensionality_reduction.py -d <dataset> -q <queryset> -od <output_dataset_file> -oq <output_query_file> -t <offline_all|online_all>
 ```
 - Outputs reduced representations in tab-separated files for downstream tasks
 
 ### Dataset Splitting
-Split a dataset into train/test/query sets:
+Split a dataset into train/query sets:
 ```bash
 python3 split_dataset.py <dataset_path>
 ```
 
-## Contributing
-Contributions are welcome! Please open an issue or submit a pull request.
-
-## License
-This project is licensed under the MIT License. See the LICENSE file for details.
+## Conclusion
+This project demonstrates the effectiveness of deep learning for time series forecasting, anomaly detection, and representation learning. By combining LSTM and convolutional autoencoder architectures, it provides a framework for analyzing complex stock time series data. The codebase is designed for clarity, reproducibility, and future extension to other domains or advanced architectures.

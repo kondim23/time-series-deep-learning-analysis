@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-from common_utils import *
+from utils import *
 from keras.layers import Input, Dense, Conv1D, MaxPooling1D, UpSampling1D, BatchNormalization, LSTM, RepeatVector, Reshape
 from keras.models import Model
 import matplotlib.pyplot as plt

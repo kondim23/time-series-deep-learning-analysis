@@ -13,9 +13,6 @@ This project implements a modular deep learning framework for time series foreca
 # Development Environment
 Development was performed in Google Collaboratory using Python notebooks. The source code is also provided as .py files for command-line execution.
 
-# Collaboration
-This repository was developed in cooperation with the kondim/repository project, which was used to verify and validate some of the results produced here, particularly for high-dimensional search and clustering tasks using the compressed time series representations.
-
 # Theoretical Background
 ## LSTM Networks
 Long Short-Term Memory (LSTM) networks are a type of recurrent neural network (RNN) designed to capture long-term dependencies in sequential data. They are effective for time series forecasting due to their ability to model temporal patterns and mitigate vanishing gradient issues.
@@ -103,7 +100,7 @@ The following images show examples where the model achieved high-quality compres
 | 2          | 32         | 2      | 16          | 50           | 13               | 0.5563     | 0.2912   |
 | 3          | 32         | 2      | 32          | 50           | 13               | 0.5303     | -0.1815  |
 | 4          | 32         | 3      | 16          | 50           | 7                | 0.5317     | -0.5217  |
-| 5          | 567        | 3      | 16          | 10           | 2                | 0.5436     | -0.9232  |
+| 5          | 32         | 3      | 16          | 10           | 2                | 0.5436     | -0.9232  |
 | 6          | 64         | 3      | 32          | 50           | 7                | 0.5304     | -0.8348  |
 | 7          | 64         | 3      | 64          | 10           | 2                | 0.5295     | -0.2726  |
 | 8          | 32         | 4      | 16          | 50           | 4                | 0.5307     | -0.1027  |
@@ -116,7 +113,7 @@ The following images show examples where the model achieved high-quality compres
 - The time-steps (look-back) hyperparameter has little effect on loss.
 - The best model uses the hyperparameters from experiment 4.
 
-The compressed time series produced were injected into the search and clustering suite for high-dimensional vectors and curves in the `kondim/repository` project. This allowed for effective nearest neighbor search and clustering, with similar centroids and neighbors being found, demonstrating the quality and utility of the learned representations for downstream tasks.
+The compressed time series produced were injected into the search and clustering suite for high-dimensional vectors and curves in the [kondim/highdim-curve-search-clustering](https://github.com/kondim23/highdim-curve-search-clustering) project. This allowed for effective nearest neighbor search and clustering, with similar centroids and neighbors being found, demonstrating the quality and utility of the learned representations for downstream tasks.
 
 # Results & Discussion
 The experiments demonstrate that:
