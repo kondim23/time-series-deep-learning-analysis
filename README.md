@@ -19,6 +19,13 @@ See [doc/report.md](doc/report.md) for detailed methodology, experiments, and re
 - Visual and quantitative evaluation of forecasting, anomaly detection, and compression.
 - External validation of compressed representations for clustering and search.
 
+## Technologies Used
+
+- **Python 3.7+** — Core programming language for all scripts and notebooks
+- **TensorFlow & Keras** — Deep learning frameworks for building and training LSTM and convolutional autoencoder models
+- **NumPy & pandas** — Data manipulation and preprocessing
+- **matplotlib** — Visualization of results and model performance
+- **Jupyter Notebook** — Interactive experimentation and documentation
 
 ## Project Structure
 ```
